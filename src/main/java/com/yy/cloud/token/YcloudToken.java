@@ -373,10 +373,6 @@ public class YcloudToken {
     }
 
     public boolean validToken(int appKey, String vuid) throws TokenException {
-        return this.validToken(appKey, vuid, -1);
-    }
-
-    public boolean validToken(int appKey, String vuid, long forceExpiredTimestampMills) throws TokenException {
         if (this.appkey != appKey) {
             throw new TokenException("The ycloudToken appKey is invalid.");
         }
@@ -389,10 +385,6 @@ public class YcloudToken {
             throw new TokenException("The ycloudToken is expire because currentTime is greater than expireTime.");
         }
 
-        if (buildTimestampMills <= forceExpiredTimestampMills) {
-            throw new TokenException(String.format("The ycloudToken is expire because buildTime is less than forced expired Time-%s.", forceExpiredTimestampMills));
-        }
-
         return true;
     }
 
@@ -402,14 +394,6 @@ public class YcloudToken {
         }
 
         return System.currentTimeMillis() <= buildTimestampMills + (long) validTime * 1000;
-    }
-
-    public boolean isValidToken(int appkey, String vuid, long forceExpiredTimestampMills) {
-        if (this.appkey != appkey || !this.uid.equals(vuid)) {
-            return false;
-        }
-
-        return System.currentTimeMillis() <= buildTimestampMills + (long) validTime * 1000 && buildTimestampMills > forceExpiredTimestampMills;
     }
 
     public int getTokenLen() {
