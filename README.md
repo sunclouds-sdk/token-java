@@ -74,8 +74,7 @@ public class YCTokenTest {
 ## Other Language YCToken SDK
 Address of other language version YCToken SDKs and the SDKs' description are as follows. Sample code for generating and verifying 
 YCToken are also available on this platforms:
- + Go
- + Java
+ + Golang
  + Python
  
 ### golang
