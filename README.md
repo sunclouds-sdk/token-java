@@ -1,12 +1,11 @@
 # YCToken
-this page describes the authentication mechanism used by the YCToken SDK of java version, as well as providing the related code for generating and verifying YCToken(v1.0.0).
+This page describes the authentication mechanism used by the YCToken SDK of java version, as well as providing the related code for generating and verifying YCToken(v1.0.0).
 
 ## Description
 YCToken is able to support verification of identity and verification of expiry time. it support the transfer of business parameters, but it doesn't check the business parameters.
 
 ## Java Sample Code
-
-### Generate YCToken
+#### Generate YCToken
 ```
 import com.yy.cloud.token.factory.YCTokenFactory;
 import org.slf4j.Logger;
@@ -44,7 +43,7 @@ public class YCTokenTest {
 }
 ```
 
-### Verify YCToken
+#### Verify YCToken
 ```
 import com.yy.cloud.token.factory.YCTokenFactory;
 import org.slf4j.Logger;
@@ -72,22 +71,18 @@ public class YCTokenTest {
 }
 ```
  
- 
+## Other Language YCToken SDK
 Address of other language version YCToken SDKs and the SDKs' description are as follows. Sample code for generating and verifying 
 YCToken are also available on this platforms:
  + Go
  + Java
  + Python
  
-### Go
+### golang
 
 + https://github.com/sunclouds-sdk/token-golang
 
-### Java
-
-+ https://github.com/sunclouds-sdk/token-java
-
-### Python
+### python
 
 + https://github.com/sunclouds-sdk/token-python
 
