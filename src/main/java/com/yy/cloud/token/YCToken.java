@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
-public class Ytoken {
+public class YCToken {
 
-    private static Logger logger = LoggerFactory.getLogger(Ytoken.class);
+    private static Logger logger = LoggerFactory.getLogger(YCToken.class);
 
     final private int tokenVersion = -10001001;
     private int tokenLen;
@@ -23,10 +23,10 @@ public class Ytoken {
     private int validTime;
 
 
-    public Ytoken buildToken(int appKey, String vuid) {
+    public YCToken buildToken(int appKey, String vuid) {
 
         if (StringUtils.isBlank(vuid)) {
-            throw new TokenException("yToken vuid can't be blank.");
+            throw new TokenException("YCToken vuid can't be blank.");
         }
 
         this.setAppkey(appKey);
@@ -37,10 +37,10 @@ public class Ytoken {
     }
 
 
-    public Ytoken buildToken(int appKey, String vuid, int validTime) {
+    public YCToken buildToken(int appKey, String vuid, int validTime) {
 
         if (StringUtils.isBlank(vuid)) {
-            throw new TokenException("yToken vuid can't be blank.");
+            throw new TokenException("YCToken vuid can't be blank.");
         }
 
         setAppkey(appKey);
@@ -51,10 +51,10 @@ public class Ytoken {
         return this;
     }
 
-    public Ytoken buildToken(int appKey, String vuid, int validTime, Map<String, String> parameterMap, Map<String, Long> privilegesMap) {
+    public YCToken buildToken(int appKey, String vuid, int validTime, Map<String, String> parameterMap, Map<String, Long> privilegesMap) {
 
         if (StringUtils.isBlank(vuid)) {
-            throw new TokenException("yToken vuid can't be blank.");
+            throw new TokenException("YCToken vuid can't be blank.");
         }
 
         setAppkey(appKey);
@@ -67,20 +67,20 @@ public class Ytoken {
         return this;
     }
 
-    public Ytoken convertFromString(int appKey, String appSecret, String token)
+    public YCToken convertFromString(int appKey, String appSecret, String token)
             throws TokenException {
         byte[] tokenByte = null;
         try {
             tokenByte = SafeUrlBase64Util.safeUrlBase64Decode(token);
         } catch (Exception e) {
-            throw new TokenException("yToken invalid, saveUrlBase64Decode failed", e);
+            throw new TokenException("YCToken invalid, saveUrlBase64Decode failed", e);
         }
 
         //校验token是否合法
         try {
             String tokenStr = tokenBytesBase2Str(tokenByte, appSecret);
             if (!tokenStr.equals(token)) {
-                throw new TokenException("yToken undecoded, maybe token invalid or appkey/appSecret invalid.");
+                throw new TokenException("YCToken undecoded, maybe token invalid or appkey/appSecret invalid.");
             }
         } catch (Exception e) {
             throw new TokenException(e.getMessage(), e);
@@ -103,7 +103,7 @@ public class Ytoken {
             curr += Integer.BYTES;
             this.appkey = Bytes.bytes2int(appkeyByte);
             if (this.appkey != appKey) {
-                throw new TokenException(String.format("yToken convertFromString error,appkey unequal[input:%s,intoken:%s]", appKey, String.valueOf(this.appkey)));
+                throw new TokenException(String.format("YCToken convertFromString error,appkey unequal[input:%s,intoken:%s]", appKey, String.valueOf(this.appkey)));
             }
 
             //反序列化uid长度
@@ -195,12 +195,12 @@ public class Ytoken {
             System.arraycopy(tokenByte, curr, validTimeByte, 0, Integer.BYTES);
             this.validTime = Bytes.bytes2int(validTimeByte);
 
-            logger.info("yToken[tokenVersion:" + tokenVersion + ",appkey:" + appKey + ",token:" + token + ",appSecret length:" + appSecret.length()
+            logger.info("YCToken[tokenVersion:" + tokenVersion + ",appkey:" + appKey + ",token:" + token + ",appSecret length:" + appSecret.length()
                     + ",vuid:" + uid + ",buildTimestampMills:" + buildTimestampMills + ",validTime:" + validTime + "]");
 
             return this;
         } catch (Exception e) {
-            throw new TokenException("yToken convertFromString error", e);
+            throw new TokenException("YCToken convertFromString error", e);
         }
     }
 
@@ -280,7 +280,7 @@ public class Ytoken {
             return tokenBytesBase2Str(tokenByte, appSecret);
 
         } catch (Exception e) {
-            throw new TokenException("product yToken string failed", e);
+            throw new TokenException("product YCToken string failed", e);
         }
 
     }
@@ -374,15 +374,15 @@ public class Ytoken {
 
     public boolean validToken(int appKey, String vuid) throws TokenException {
         if (this.appkey != appKey) {
-            throw new TokenException("The yToken appKey is invalid.");
+            throw new TokenException("The YCToken appKey is invalid.");
         }
 
         if (!this.uid.equals(vuid)) {
-            throw new TokenException("The yToken vuid is invalid.");
+            throw new TokenException("The YCToken vuid is invalid.");
         }
 
         if (System.currentTimeMillis() > buildTimestampMills + (long) validTime * 1000) {
-            throw new TokenException("The yToken is expire because currentTime is greater than expireTime.");
+            throw new TokenException("The YCToken is expire because currentTime is greater than expireTime.");
         }
 
         return true;
