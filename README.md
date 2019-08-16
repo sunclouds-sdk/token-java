@@ -1,5 +1,5 @@
 # YCToken
-本文介绍了java版YCToken SDK的使用方法，并提供了产YCToken和验YCToken的代码示例。
+本文介绍了java版YCToken SDK的使用方法，并提供了产YCToken和验YCToken的代码示例（最新版本v1.0.0）。
 
 ## 描述
 YCToken能够支持身份验证和过期时间验证，并支持业务参数的透传（不对业务参数进行校验）。
@@ -72,7 +72,7 @@ public class YCTokenTest {
 ```
  
 ## 其他语言的YCToken SDK
-其他语言的YCToken SDK及它们的介绍、相关示例代码地址如下：
+其他语言的YCToken SDK源码及它们的介绍、示例代码地址如下：
  
 ### golang
 
@@ -82,4 +82,4 @@ public class YCTokenTest {
 
 + https://github.com/sunclouds-sdk/token-python
 
-> 你可以使用YCToke实例代码完成产TCToken和验TCToken。
+> 你可以使用YCToke示例代码完成产TCToken和验TCToken。
