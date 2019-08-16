@@ -82,4 +82,4 @@ public class YCTokenTest {
 
 + https://github.com/sunclouds-sdk/token-python
 
-> 你可以使用YCToke示例代码完成产TCToken和验TCToken。
+> 你可以使用YCToke示例代码完成产YCToken和验YCToken。
