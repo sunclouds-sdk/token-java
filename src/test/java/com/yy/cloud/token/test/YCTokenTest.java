@@ -26,14 +26,14 @@ public class YCTokenTest {
         privilegeMap.put("442cd", 12345453540L);
         privilegeMap.put("你", 123412133540L);
 
-        String YCTokenStr = factory.createToken(132154, "5461235ss", 132123, parameterMap, privilegeMap, "2aeeb8de_3");
+        String YCTokenStr = factory.createToken(132154, "5461235ss", 10000000, parameterMap, privilegeMap, "123456");
         logger.info("token:" + YCTokenStr);
 
     }
 
     @Test
     public void validToken() {
-        YCToken YCToken = factory.convertFromString(132154, "2aeeb8de_3", "_2dllwAAAIsAAgQ6AAk1NDYxMjM1c3MAAwAD5L2gAAPlpb0ABTQ0MmNkAAhmZHNhZjU0NQADZmR5AAVzb2llNAADAAPkvaAAAAAcu--2pAAFNDQyY2QAAAAC39ir5AADZmR5AAAAAEmVB3QAAAFsg_xX_QACBBsDsrYj2KqDrwNWInmBF2AHZEK0aA");
+        YCToken YCToken = factory.convertFromString(132154, "123456", "_2dllwAAAIsAAgQ6AAk1NDYxMjM1c3MAAwAD5L2gAAPlpb0ABTQ0MmNkAAhmZHNhZjU0NQADZmR5AAVzb2llNAADAAPkvaAAAAAcu--2pAAFNDQyY2QAAAAC39ir5AADZmR5AAAAAEmVB3QAAAFtHlpqYwCYloBPqJ7PoydrPN0-4ux3WUZFldx3PA");
         logger.info("token appkey:" + String.valueOf(YCToken.getAppkey()));
         logger.info("token buildTimestamp:" + String.valueOf(YCToken.getBuildTimestampMills()));
         logger.info("token parameterMap:" + String.valueOf(YCToken.getParameterMap()));

@@ -23,7 +23,7 @@ public class YCTokenTest {
         final int appkey = 132154;
         final String uid = "5461235ss";
         final int validTime = 1576800000;   //秒数
-        final String appSecret = "2aeeb8de_3";
+        final String appSecret = "123456";
 
         //参数map
         Map<String, String> parameterMap = new HashMap<String, String>();
@@ -56,8 +56,8 @@ public class YCTokenTest {
 
     public static void main(String[] args) {
         int appkey = 132154;
-        String appSecret = "2aeeb8de_3";
-        YCToken YCToken = factory.convertFromString(appkey, appSecret, "_2dllwAAALkAAgQ6AAk1NDYxMjM1c3MAAwAJcFRlc3QxS2V5AAlwVGVzdDFWYWwACua1i-ivlWtleTEACua1i-ivleWAvDEACXBUZXN0MktleQAJcFRlc3QyVmFsAAMACXBUZXN0MUtleQAAAABJlQd0AArmtYvor5VrZXkxAAAAHLvvtqQACXBUZXN0MktleQAAAALf2KvkAAABbJOK1n9d_A8AICKVht3MwiFT6IClKMcSNroRwUw");
+        String appSecret = "123456";
+        YCToken YCToken = factory.convertFromString(appkey, appSecret, "_2dllwAAAIsAAgQ6AAk1NDYxMjM1c3MAAwAD5L2gAAPlpb0ABTQ0MmNkAAhmZHNhZjU0NQADZmR5AAVzb2llNAADAAPkvaAAAAAcu--2pAAFNDQyY2QAAAAC39ir5AADZmR5AAAAAEmVB3QAAAFtHlpqYwCYloBPqJ7PoydrPN0-4ux3WUZFldx3PA");
         logger.info("token appkey:" + String.valueOf(YCToken.getAppkey()));
         logger.info("token buildTimestamp:" + String.valueOf(YCToken.getBuildTimestampMills()));
         logger.info("token parameterMap:" + String.valueOf(YCToken.getParameterMap()));
